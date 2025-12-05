@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Үздік жас ветеринар — 2025</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4; /* Жеңіл сұр фон */
+        scroll-behavior: smooth;
+    }
+
+    /* Жоғарғы жасыл жол */
+    .top-bar {
+        width: 100%;
+        background: #09a66c;
+        color: white;
+        padding: 12px 40px;
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Тіл таңдау */
+    .lang {
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    /* Мәзір */
+    .menu {
+        background: white;
+        width: 100%;
+        padding: 12px 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky; /* Мәзірді жоғарыда ұстау */
+        top: 0;
+        z-index: 1000;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        margin: 0 18px;
+        font-size: 19px;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .menu a:hover, .menu a.active {
+        color: #09a66c;
+    }
+
+    /* Бөлім атауы */
+    .section-title {
+        background: #09a66c;
+        color: white;
+        padding: 14px 30px;
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: 40px;
+        margin-left: 40px;
+        border-radius: 12px;
+        width: max-content;
+    }
+
+    /* Негізгі беттегі үлкен фон */
+    .hero {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 50px 0;
+        background: linear-gradient(to right, #dff7ef, #bff0df);
+    }
+
+    .hero-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+    }
+
+    .hero img {
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .hero-text {
+        margin-left: 40px;
+        font-size: 40px;
+        font-weight: bold;
+        color: #004d34;
+        line-height: 1.2;
+    }
+
+    /* Ұқсас көк котировка */
+    .quote {
+        font-size: 22px;
+        margin: 20px auto;
+        padding: 0 40px;
+        color: #003322;
+        max-width: 1100px;
+        font-weight: bold;
+    }
+
+    /* Контакт батырмалар */
+    .contacts {
+        display: flex;
+        padding: 0 40px;
+        margin: 25px auto 0;
+        max-width: 1100px;
+    }
+
+    .contact-btn {
+        background: white;
+        border: 3px solid #09a66c;
+        color: #09a66c;
+        padding: 12px 25px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .contact-btn:hover {
+        background: #09a66c;
+        color: white;
+    }
+
+    /* Ақ блоктар */
+    .white-box {
+        width: 90%;
+        max-width: 1120px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        font-size: 20px;
+        line-height: 1.7;
+    }
+    
+    /* Абзац стилін жаңарттық: арасын әдемілей ашу */
+    .white-box p {
+        margin-top: 1em; /* Жоғарыдағы абзацтан 1 жол бос орын */
+        margin-bottom: 0; 
+        text-indent: 0; /* Шегіністі алып тастадық */
+    }
+    
+    .white-box p:first-of-type {
+        margin-top: 0;
+    }
+
+
+    /* Суреттер галереясы */
+    .image-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px 40px;
+        max-width: 1120px;
+        margin: 20px auto 40px;
+        justify-content: center;
+    }
+
+    .gallery-item {
+        width: 100%;
+        max-width: 300px; 
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Мамандық таңдау және Жұмыс суреттері үшін кіші өлшемді сақтадық */
+    .gallery-item.small {
+        max-width: 250px;
+    }
+    
+    .gallery-item.small img { 
+        height: 200px;
+    }
+    
+    /* Білім және Марапат суреттерінің оригинал формасын сақтау үшін жаңа стиль */
+    .gallery-item.large {
+        max-width: 500px; /* Суреттерді үлкенірек ету */
+    }
+
+    .gallery-item.large img {
+        height: auto; /* Оригинал пропорциясын сақтау */
+        object-fit: contain;
+    }
+    
+
+    /* Бөлімдерді жасыру */
+    .section-content {
+        display: none;
+        padding-bottom: 50px;
+        animation: fadeIn 0.8s ease-out;
+    }
+    
+    .section-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    ЖЫЛ ҮЗДІГІ — 2025
+    <div class="lang">ҚАЗ</div>
+</div>
+
+<div class="menu">
+    <a href="#basty" class="menu-link active" data-target="basty-content">БАСТЫ БЕТ</a>
+    <a href="#omir" class="menu-link" data-target="omir-content">ӨМІРБАЯН</a>
+    <a href="#otbasy" class="menu-link" data-target="otbasy-content">ОТБАСЫ</a>
+    <a href="#zhumys" class="menu-link" data-target="zhumys-content">ЖҰМЫС</a>
+    <a href="#bilim" class="menu-link" data-target="bilim-content">БІЛІМ</a>
+    <a href="#marapat" class="menu-link" data-target="marapat-content">ЖЕТІСТІКТЕРІМ</a>
+</div>
+
+<section id="basty-content" class="section-content active">
+    <div class="hero">
+        <div class="hero-content">
+            <img src="img/адам.jpg" alt="Каримолла Мейрамның суреті">
+            <div class="hero-text">
+                Каримолла Мейрам Хамидуллаұлы
+            </div>
+        </div>
+    </div>
+
+    <div class="quote">
+        «Жануарға жанашырлық – адамдықтың ең жоғары шыңы.  
+        Сол шыңға күн сайын шығатындар – ветеринарлар.»
+    </div>
+
+    <div class="contacts">
+        <div class="contact-btn">📞 +7 705 328 4875</div>
+        <div class="contact-btn">📷 @_meiram07_</div>
+    </div>
+
+    <div class="white-box">
+        <b>МАМАНДЫҚТЫ ТАҢДАУ СЕБЕБІМ</b>  
+        <br>
+        <p>Ветеринария саласын таңдауыма ең үлкен әсер еткен – атам. Атам КСРО заманынан бастап ветеринар болып жұмыс істеген.</p> 
+        <p>Бала кезімде оның жанында жүріп, жұмысын қызығушылықпен бақылап, көмектесіп, үйреніп өстім. Сол себепті жас кезімнен-ақ өскенде ветеринар боламын деп шештім.</p>
+        <p>Жануарларға көмектесу, ауыл-аймаққа пайда тигізу және атамның жолын жалғастыру – мен үшін үлкен мәртебе.</p>
+    </div>
+    
+    <div class="image-gallery">
+        <div class="gallery-item small"><img src="img/мамандық1.jpg" alt="Мамандық таңдау суреті 1"></div>
+        <div class="gallery-item small"><img src="img/мамандық2.jpg" alt="Мамандық таңдау суреті 2"></div>
+        <div class="gallery-item small"><img src="img/мамандық3.jpg" alt="Мамандық таңдау суреті 3"></div>
+        <div class="gallery-item small"><img src="img/мамандық4.jpg" alt="Мамандық таңдау суреті 4"></div>
+        <div class="gallery-item small"><img src="img/мамандық5.jpg" alt="Мамандық таңдау суреті 5"></div>
+        <div class="gallery-item small"><img src="img/мамандық6.jpg" alt="Мамандық таңдау суреті 6"></div>
+        <div class="gallery-item small"><img src="img/мамандық7.jpg" alt="Мамандық таңдау суреті 7"></div>
+        <div class="gallery-item small"><img src="img/мамандық8.jpg" alt="Мамандық таңдау суреті 8"></div>
+    </div>
+</section>
+
+<section id="omir-content" class="section-content">
+    <div class="section-title">ӨМІРБАЯН</div>
+
+    <div class="white-box">
+        <p>Мен, Каримолла Мейрам Хамидуллаұлы, 2000 жылдың 1 мамырында Батыс Қазақстан облысы, Ақжайық ауданының Қабыршақты ауылында дүниеге келдім. Туған өлкемнің табиғаты мен ауыл тіршілігі менің еңбекке деген сүйіспеншілігімді қалыптастырып, таңдаған мамандығыма деген қызығушылықты ерте оятты.</p>
+        <p>2018 жылы «Бітік мектеп-бөбекжай кешені» КММ білім ордасын аяқтап, сол жылы Жәңгір хан атындағы Батыс Қазақстан аграрлық-техникалық университетіне оқуға түсіп, ветеринария мамандығын таңдадым. Студенттік жылдарым кәсіби қалыптасуымның маңызды кезеңі болып, 2023 жылы аталған оқу орнын ойдағыдай аяқтадым.</p>
+        <p>2021–2022 жылдары Жәңгір хан атындағы БҚАТУ-дың әскери кафедрасында білім алып, оқуымды сәтті тәмамдағаннан кейін "запастағы лейтенант" әскери атағын иелендім. Бұл кезең маған жауапкершілік пен тәртіптіліктің маңызын терең түсінуге мүмкіндік берді.</p>
+        <p>Еңбек жолымды 2023–2024 жылдары Бәйтерек ауданы Атамекен ауылындағы «Aqsunqar» ЖШС-інде "ветеринариялық техник" ретінде бастадым. Мал шаруашылығындағы тәжірибемді кеңейтіп, ауыл шаруашылығы саласының қыр-сырына терең бойладым.</p>
+        <p>2024–2025 жылдары Бәйтерек аудандық ветеринариялық станциясында "ветфельдшер" қызметін атқарып, өз кәсібіме деген жауапкершілігімді әрі қарай арттыра түстім. Жануарлардың саулығын қамтамасыз ету, алдын алу шараларын жүргізу секілді жұмыстарда мол тәжірибе жинақтадым.</p>
+        <p>2025 жылдың сәуір айынан бастап бүгінгі күнге дейін Бәйтерек ауданы ветеринариялық станциясына қарасты Атамекен ауылдық округінің "ветеринариялық пунктінің меңгерушісі" қызметін атқарып келемін. Бұл қызмет – ауыл шаруашылығы саласына қосқан үлесімді арттыра түсетін маңызды кезең. Қызмет барысында мал басының амандығын қамтамасыз ету, эпизоотиялық жағдайды бақылау, ветеринариялық қызмет сапасын жақсарту бағытында еңбек етудемін.</p>
+    </div>
+
+    <div class="image-gallery">
+        <div class="gallery-item"><img src="img/өмірбаян1.jpg" alt="Өмірбаян суреті 1"></div>
+        <div class="gallery-item"><img src="img/өмірбаян2.jpg" alt="Өмірбаян суреті 2"></div>
+        <div class="gallery-item"><img src="img/өмірбаян3.jpg" alt="Өмірбаян суреті 3"></div>
+    </div>
+</section>
+
+<section id="otbasy-content" class="section-content">
+    <div class="section-title">ОТБАСЫ</div>
+
+    <div class="white-box">
+        <p>Менің отбасым 9 адамнан тұрады: атам, әжем, әкем, анам, әпкем, өзім, інім және екі қарындасым.Үлкен, тату отбасы маған жауапкершілік, сыйластық, мейірімділік және еңбекқорлық қасиеттерін дарытты.</p>
+    </div>
+
+    <div class="image-gallery">
+        <div class="gallery-item"><img src="img/отбасы.jpg" alt="Отбасы суреті 1"></div>
+        <div class="gallery-item"><img src="img/отбасы1.jpg" alt="Отбасы суреті 2"></div>
+    </div>
+</section>
+
+<section id="zhumys-content" class="section-content">
+    <div class="section-title">ЖҰМЫС</div>
+    <div class="white-box">
+        <p>"Жұмысқа адал бол, табыс өздігінен келеді."</p>
+    </div>
+
+    <div class="image-gallery">
+        <div class="gallery-item small"><img src="img/жұмыс.jpg" alt="Жұмыс суреті 1"></div>
+        <div class="gallery-item small"><img src="img/жұмыс2.jpg" alt="Жұмыс суреті 2"></div>
+        <div class="gallery-item small"><img src="img/жұмыс3.jpg" alt="Жұмыс суреті 3"></div>
+        <div class="gallery-item small"><img src="img/жұмыс4.jpg" alt="Жұмыс суреті 4"></div>
+        <div class="gallery-item small"><img src="img/жұмыс5.jpg" alt="Жұмыс суреті 5"></div>
+        <div class="gallery-item small"><img src="img/жұмыс6.jpg" alt="Жұмыс суреті 6"></div>
+        <div class="gallery-item small"><img src="img/жұмыс7.jpg" alt="Жұмыс суреті 7"></div>
+        <div class="gallery-item small"><img src="img/жұмыс8.jpg" alt="Жұмыс суреті 8"></div>
+        <div class="gallery-item small"><img src="img/жұмыс9.jpg" alt="Жұмыс суреті 9"></div>
+    </div>
+</section>
+
+<section id="bilim-content" class="section-content">
+    <div class="section-title">БІЛІМ</div>
+    <div class="white-box">
+        <p>"Білім – бұл ақылдың байлығы, ешкім тартып ала алмайтын қазына."</p>
+    </div>
+
+    <div class="image-gallery">
+        <div class="gallery-item large"><img src="img/білім1.jpg" alt="Білім суреті 1"></div>
+        <div class="gallery-item large"><img src="img/білім2.jpg" alt="Білім суреті 2"></div>
+    </div>
+</section>
+
+<section id="marapat-content" class="section-content">
+    <div class="section-title">ЖЕТІСТІКТЕРІМ</div>
+    <div class="white-box">
+        <p>"Жетістікке жеткен адам – ешқашан берілмеген адам."</p>
+    </div>
+
+    <div class="image-gallery">
+        <div class="gallery-item large"><img src="img/марапат1.jpg" alt="Марапат суреті 1"></div>
+        <div class="gallery-item large"><img src="img/марапат2.jpg" alt="Марапат суреті 2"></div>
+        <div class="gallery-item large"><img src="img/марапат3.jpg" alt="Марапат суреті 3"></div>
+        <div class="gallery-item large"><img src="img/марапат4.jpg" alt="Марапат суреті 4"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuLinks = document.querySelectorAll('.menu-link');
+        const sections = document.querySelectorAll('.section-content');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                menuLinks.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    this.classList.add('active'); 
+                    
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        document.getElementById('basty-content').classList.add('active');
+    });
+</script>
+
+</body>
+</html>
